@@ -40,7 +40,7 @@ public double montoCobrado(LocalDate fechaInicio, LocalDate fechaFin){...}
 
 Al revisar el siguiente diseño inicial (Figura 1), se decidió realizar un cambio para evitar lo que se consideraba un mal olor. El diseño modificado se muestra en la Figura 2. Indique qué tipo de cambio se realizó y si lo considera apropiado. Justifique su respuesta.
 
-![alt text](image-1.png)
+![alt text](image.png)
 
 *Code Smells*
 - Feature Envy
