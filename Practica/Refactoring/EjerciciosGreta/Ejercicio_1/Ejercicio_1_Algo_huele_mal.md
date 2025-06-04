@@ -129,10 +129,16 @@ public void imprimirValores() {
 - **Extract Method**, para modularizar la solución.
 - **Replace Temp with Query**, quitamos las variables temporales con una consulta.
 
-### 4. Extracto del método con el refactoring aplicado
+### 4. UML con la solución final
+
+De momento, no dibujado.
+
+
+### 5. Extracto del método con el refactoring aplicado
 
 ```java
-public void imprimirValores() {
+
+public void imprimirPromedioEdadesYTotalSalario() {
     System.out.println("Promedio de edades: " + this.calcularPromedioEdades()
         + " | Total salarios: " + this.calcularTotalSalarios());
 }
