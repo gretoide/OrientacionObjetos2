@@ -97,33 +97,56 @@ public void imprimirValores() {
 
 ```
 
-*Code Smells*
-- Los nombres son pocos descriptivos. Se podría cambiar el nombre de 'imprimirValores' a 'imprimirValoresPromedioEdadesYTotalSalarios'. Aunque seguiría quedando excesivamente largo.
-- Otro mal olor es el de *Large Method*, podría reescribirse de la siguiente manera:
+### 1. Identificar los code smells
+- Los nombres son pocos descriptivos. 
+- Otro mal olor es el de *Large Method*, podría reescribirse.
+
+### 2. Extracto del código con mal olor
 
 ```java
-public void imprimirValores(){
-    return system.out.println("Promedio de edades: " + this.calcularPromedioEdades() + " | Total salarios: " + this.calcularTotalSalarios());
+
+public void imprimirValores() {
+	int totalEdades = 0;
+	double promedioEdades = 0;
+	double totalSalarios = 0;
+	
+	for (Empleado empleado : personal) {
+		totalEdades = totalEdades + empleado.getEdad();
+		totalSalarios = totalSalarios + empleado.getSalario();
+	}
+	promedioEdades = totalEdades / personal.size();
+		
+	String message = String.format("El promedio de las edades es %s y el total de salarios es %s", promedioEdades, totalSalarios);
+	
+	System.out.println(message);
 }
 
-private int sumarEdades(){
-    int sumaEdades = 0;
-    for(Empleado empleado : this.personal){
-        sumaEdades += empleado.getEdad();
-    }
-    return sumaEdades;
+
+```
+
+### 3. Determinar el refactoring a aplicar 
+
+- **Extract Method**, para modularizar la solución.
+- **Replace Temp with Query**, quitamos las variables temporales con una consulta.
+
+### 4. Extracto del método con el refactoring aplicado
+
+```java
+public void imprimirValores() {
+    System.out.println("Promedio de edades: " + this.calcularPromedioEdades()
+        + " | Total salarios: " + this.calcularTotalSalarios());
 }
 
-private double calcularPromedioEdades(){
-    return (this.sumarEdades() / this.personal.size());
+private double calcularPromedioEdades() {
+    return this.personal.stream()
+        .mapToDouble(persona -> persona.getEdad())
+        .average()
+        .orElse(0);
 }
 
-private double calcularTotalSalarios(){
-    double totalSalarios = 0;
-    for(Empleado empleado : this.personal){
-        totalSalarios += empleado.getSalario();
-    }
-    return totalSalarios;
+private double calcularTotalSalarios() {
+    return this.personal.stream()
+        .mapToDouble(persona -> persona.getSalario())
+        .sum();
 }
-
 ```
