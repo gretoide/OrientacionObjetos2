@@ -42,12 +42,36 @@ Al revisar el siguiente diseño inicial (Figura 1), se decidió realizar un ca
 
 ![alt text](image.png)
 
-*Code Smells*
+### 1. Code Smells
 - Feature Envy
 - Data Class
 
-Los cambios realizados los considero apropiados porque la clase Persona tiene envidia de atributos respecto a Proyecto, ya que el acceso a los participantes originalmente le corresponde a Proyecto. 
-También proyecto sin este cambio sería solamente una Data Class.
+### 2. Extracto del código que representa el mal olor
+
+ ```java
+ public class Persona {
+
+public boolean participantesEnProyecto(Proyecto p){
+        return p.getParticipantes().contains(this);
+    }
+ }
+```
+### 3. Determinar refactoring a utilizar
+ Los cambios realizados los considero apropiados porque se le quita la responsabilidad a la clase *Persona* de saber si participa o no en el *Proyecto* y se la otorga a esta última, ya que sabe sus *participantes*.
+Las métodos de refactoring usados en este ejercicio son **Extract Method**...
+
+### 4 Código con el refactoring aplicado
+ ```java
+ public class Proyecto {
+    
+public boolean participantesEnProyecto(Persona persona){
+        return this.participantes.contains(persona);
+    }
+ }
+```
+### 5. Diagrama con el diseño final
+
+Se demuestra en figura 1.
 
 ## 1.3 Cálculos
 Analice el código que se muestra a continuación. Indique qué code smells encuentra y cómo pueden corregirse.						
