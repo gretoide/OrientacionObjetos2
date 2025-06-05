@@ -55,6 +55,8 @@ Todo el que se muestra arriba.
 
 ### 4. Diseño UML
 
+![alt text](image-3.png)
+
 ### 5. Código con el refactoring aplicado
 
 ```java
@@ -68,28 +70,18 @@ public List<Post> ultimosPostsQueNoPertenecenAlUsuario(Usuario user, int cantida
     return obtenerUltimosNPost(postPorOtrosUsuarios, cantidad);
 }
 
+private List<Post> postPorOtrosUsuarios(Usuario user){
+    /* Nos quedamos con los post que NO son del usuario */
+    return this.post.stream().filter(post -> !post.getUsuario().equals(user));
 }
-         
-   // ordena los posts por fecha 
-   for (int i = 0; i < postsOtrosUsuarios.size(); i++) { 
-       int masNuevo = i; 
-       for(int j= i +1; j < postsOtrosUsuarios.size(); j++) { 
-           if (postsOtrosUsuarios.get(j).getFecha().isAfter( 
-     postsOtrosUsuarios.get(masNuevo).getFecha())) { 
-              masNuevo = j; 
-           }     
-       } 
-      Post unPost = postsOtrosUsuarios.set(i,postsOtrosUsuarios.get(masNuevo)); 
-      postsOtrosUsuarios.set(masNuevo, unPost);     
-   } 
-         
-    List<Post> ultimosPosts = new ArrayList<Post>(); 
-    int index = 0; 
-    Iterator<Post> postIterator = postsOtrosUsuarios.iterator(); 
-    while (postIterator.hasNext() &&  index < cantidad) { 
-        ultimosPosts.add(postIterator.next()); 
-    } 
-    return ultimosPosts; 
-} 
+
+private List<Post> ordenarPostPorFecha(List<Post> listadoPost){
+    return listadoPost.stream().sorted((p1,p2) -> p1.getFecha().compareTo(p2.getFecha()));
+}
+
+private List<Post> obtenerUltimosNPost(List<Post> listadoPost, int cantidad){
+    return listadoPost.stream().limit(cantidad).collect(Collectors.toList());
+}
 
 ```
+
