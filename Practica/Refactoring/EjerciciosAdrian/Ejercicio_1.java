@@ -18,10 +18,7 @@ public void imprimirValores() {
 
 /* CORRECCIÓN */
 public void imprimirValores() {
-	
-
-	String message = String.format("El promedio de las edades es %s y el total de salarios es %s", promedioEdades, totalSalarios);
-	System.out.println(message); 
+	System.out.println("El promedio de las edades es:" , this.calcularPromedioEdades(), "el total de salarios es:" this.calcularSalario() );
 } 
 
 private double calcularPromedioEdades(){
@@ -30,6 +27,4 @@ private double calcularPromedioEdades(){
 
 private double calcularSalario(){
     return this.personal.stream().MapToDouble(persona -> persona.getSalario()).sum();
-
-
 }
