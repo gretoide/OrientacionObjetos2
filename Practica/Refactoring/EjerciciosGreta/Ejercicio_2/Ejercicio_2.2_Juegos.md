@@ -55,7 +55,7 @@ public class Juego {
 - Move Method, mover los métodos a la clase de jugador.
 
 ### 4. UML de la solucion final
-![alt text](image-1.png)
+![alt text](.\UMLyArchivos\image-1.png)
 
 ### 5. Código con el refactoring aplicado
 

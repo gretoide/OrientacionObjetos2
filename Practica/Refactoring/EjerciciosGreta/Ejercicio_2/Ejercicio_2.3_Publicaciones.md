@@ -55,7 +55,7 @@ Todo el que se muestra arriba.
 
 ### 4. Diseño UML
 
-![alt text](image-3.png)
+![alt text](.\UMLyArchivos\image-3.png)
 
 ### 5. Código con el refactoring aplicado
 
