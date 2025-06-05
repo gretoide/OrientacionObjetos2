@@ -82,10 +82,10 @@ public class EmpleadoTemporario {
 
 ### 5. Código corregido
 
-- [Empleado](./Empleado.java)
-- [Pasante](./Pasante.java)
-- [Planta](./Planta.java)
-- [Permanente](./Permanente.java)
-- [Temporario](./Temporario.java)
+- [Empleado](./UMLyArchivos/Empleado.java)
+- [Pasante](./UMLyArchivos/Pasante.java)
+- [Planta](./UMLyArchivos/Planta.java)
+- [Permanente](./UMLyArchivos/Permanente.java)
+- [Temporario](./UMLyArchivos/Temporario.java)
 
 ## 2.2
