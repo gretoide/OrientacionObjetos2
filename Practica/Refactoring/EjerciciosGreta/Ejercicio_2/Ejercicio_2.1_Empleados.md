@@ -78,7 +78,7 @@ public class EmpleadoTemporario {
   
 ### 4. Diseño de UML - Solución final
 
-![alt text](image.png)
+![alt text](.\UMLyArchivos\image.png)
 
 ### 5. Código corregido
 
