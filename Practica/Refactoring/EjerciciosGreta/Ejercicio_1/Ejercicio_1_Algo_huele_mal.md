@@ -5,7 +5,7 @@ La clase Cliente tiene el siguiente protocolo. ¿Cómo puede mejorarlo?
 
 
 ```java
-* Retorna el límite de crédito del cliente
+/* Retorna el límite de crédito del cliente
 */
 public double lmtCrdt() {...
 
