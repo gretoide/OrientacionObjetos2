@@ -37,8 +37,8 @@ public class Jugador {
 -Move method
 
 ### 4. Desarrollo del UML con el nuevo código
-/** **/
 
+![alt text](image.png)
 
 ### 5 Expongo el código correjido, con el refactoring aplicado
 
