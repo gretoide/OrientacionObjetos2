@@ -88,4 +88,4 @@ public class EmpleadoTemporario {
 - [Permanente](./UMLyArchivos/Permanente.java)
 - [Temporario](./UMLyArchivos/Temporario.java)
 
-## 2.2
+
