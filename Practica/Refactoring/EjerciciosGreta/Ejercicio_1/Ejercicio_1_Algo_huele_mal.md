@@ -57,10 +57,16 @@ public boolean participantesEnProyecto(Proyecto p){
  }
 ```
 ### 3. Determinar refactoring a utilizar
+
  Los cambios realizados los considero apropiados porque se le quita la responsabilidad a la clase *Persona* de saber si participa o no en el *Proyecto* y se la otorga a esta última, ya que sabe sus *participantes*.
 Las métodos de refactoring usados en este ejercicio son **Extract Method**...
 
-### 4 Código con el refactoring aplicado
+### 4. Diagrama con el diseño final
+
+Se demuestra en figura 1.
+
+### 5 Código con el refactoring aplicado
+
  ```java
  public class Proyecto {
     
@@ -69,12 +75,10 @@ public boolean participantesEnProyecto(Persona persona){
     }
  }
 ```
-### 5. Diagrama con el diseño final
 
-Se demuestra en figura 1.
 
 ## 1.3 Cálculos
-Analice el código que se muestra a continuación. Indique qué code smells encuentra y cómo pueden corregirse.						
+Analice el código que se muestra a continuación. Indique qué code smells encuentra y cómo pueden corregirse.
 
 ```java
 
@@ -129,10 +133,16 @@ public void imprimirValores() {
 - **Extract Method**, para modularizar la solución.
 - **Replace Temp with Query**, quitamos las variables temporales con una consulta.
 
-### 4. Extracto del método con el refactoring aplicado
+### 4. UML con la solución final
+
+De momento, no dibujado.
+
+
+### 5. Extracto del método con el refactoring aplicado
 
 ```java
-public void imprimirValores() {
+
+public void imprimirPromedioEdadesYTotalSalario() {
     System.out.println("Promedio de edades: " + this.calcularPromedioEdades()
         + " | Total salarios: " + this.calcularTotalSalarios());
 }
