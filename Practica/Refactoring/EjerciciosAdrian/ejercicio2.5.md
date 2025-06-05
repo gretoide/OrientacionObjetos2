@@ -32,6 +32,16 @@ public class Cliente {
 }
 ```
 - 1) Detectar y nombrar los malos olores.
-- Data Class 
+- Clase datos "Data Class" 
+- intimidad inapropiada "inappropiate intemacy " cuando una clase accede demaciado a los atributos o métodos de otra.En este caso Cliente con Dirección
+- envidia de atributos 
+- los atributos están como publicos
+
+- 2) exlicar el refactoring que utilizaremos.
+- Mover los campos "move field"
+- poner los atributos publicos como privados. "Encapsular"
+- Eliminamos la clase de datos.
+
+- 3) UML
 
 
