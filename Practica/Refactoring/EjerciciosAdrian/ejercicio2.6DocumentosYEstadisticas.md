@@ -1,4 +1,4 @@
-## 2.5 ENVIO DE PEDIDOS Adrian
+## 2.6 ENVIO DE PEDIDOS Adrian
 
 ### Pasos a seguir 
 - 1) Detectar y nombrar los malos olores.
@@ -67,10 +67,76 @@ return (ChronoUnit.DAYS.between(this.fechaEstreno, LocalDate.now()) ) > 30 ? 0 :
 
 ### 3. UML de la solución
 
-
+![alt text](image-5.png)
 
 ### 4. Expongo el código correjido, con el refactoring aplicado.
 
+```java
+public class Usuario {
+	private Subscripcion tipoSubscripcion;
+    // ...
+
+	public void setTipoSubscripcion(Subscripcion unTipo) {
+		this.tipoSubscripcion = unTipo;
+	}
+
+	public double calcularCostoPelicula(Pelicula pelicula) {
+		return tipoSubscripcion.calcularCostoPelicula(pelicula);
+	}
+}
+
+public abstract class Subscripcion {
+
+	public abstract double calcularCostoPelicula(Pelicula pelicula);
+
+}
+
+public class SubscripcionBasica extends Subscripcion{
+	
+	public double calcularCostoPelicula(Pelicula pelicula) {
+		return pelicula.getCosto() + pelicula.calcularCargoExtraPorEstreno();
+	}
+
+}
+
+public class SubscripcionFamilia extends Subscripcion{
+
+	public double calcularCostoPelicula(Pelicula pelicula) {
+		return (pelicula.getCosto() + pelicula.calcularCargoExtraPorEstreno()) * 0.90;
+	}
+
+}
+
+public class SubscripcionPlus extends Subscripcion{
+
+	public double calcularCostoPelicula(Pelicula pelicula) {
+		return pelicula.getCosto();
+	}
+
+}
+
+public class SubscripcionPremium extends Subscripcion{
+
+	public double calcularCostoPelicula(Pelicula pelicula) {
+		return pelicula.getCosto() * 0.75;
+	}
+
+}
+
+public class Pelicula {
+	private LocalDate fechaEstreno;
+    // ...
+
+	public double getCosto() {
+		return this.costo;
+	}
+
+	public double calcularCargoExtraPorEstreno() {
+		// Si la Película se estrenó 30 días antes de la fecha actual, retorna un cargo
+		// de 0$, caso contrario, retorna un cargo extra de 300$
+		return (ChronoUnit.DAYS.between(this.fechaEstreno, LocalDate.now())) > 30 ? 0 : 300;
+	}
+}```
 
 
 
