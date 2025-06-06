@@ -1,6 +1,8 @@
-# 2.5 Envio de Pedidos
 
-![alt text](.\UMLyArchivos\image-7.png)
+
+## 2.5 Envío de Pedidos
+
+![alt text](./UMLyArchivos/image-7.png)
 
 ```java
 import java.text.MessageFormat;
@@ -11,7 +13,7 @@ public class Supermercado {
             "Estimado cliente, se le informa que hemos recibido su pedido con número {0}, el cual será enviado a la dirección {1}",
             new Object[] { nroPedido, cliente.getDireccionFormateada() }
         );
-        // lo imprimimos en pantalla, podría ser un mail, SMS, etc..
+        // Lo imprimimos en pantalla. Podría ser un mail, SMS, etc.
         System.out.println(notificacion);
     }
 }
@@ -26,23 +28,29 @@ public class Cliente {
                this.direccion.getDepartamento();
     }
 }
-
-
 ```
 
-### 1. Identificar Code Smells
-- Data Class por parte de dirección.
-- Envidia de Atributos de la clase Cliente.
-- Intimidad inapropiada, una clase accede demasiado a los detalles internos de otra clase, en este caso, Cliente accediendo a los datos de Dirección.
-- Atributos públicos.
+---
+
+### 1. Code Smells identificados
+
+* **Data Class** en la clase `Direccion`.
+* **Feature Envy** (envidia de atributos) en la clase `Cliente`.
+* **Inappropriate Intimacy** (intimidad inapropiada): una clase accede demasiado a los detalles internos de otra (en este caso, `Cliente` accede a los atributos de `Direccion`).
+* **Atributos públicos** o demasiado expuestos.
+
+---
 
 ### 2. Refactorings a utilizar
-- Move field
-- Encapsulate field
+
+* **Move Field**: mover los atributos que son más utilizados en `Cliente` directamente a esa clase.
+* **Encapsulate Field**: encapsular los atributos para mantener el principio de ocultamiento.
+
+---
 
 ### 3. Resultado
 
-![alt text](.\UMLyArchivos\image-8.png)
+![alt text](./UMLyArchivos/image-8.png)
 
 ```java
 import java.text.MessageFormat;
@@ -53,7 +61,7 @@ public class Supermercado {
             "Estimado cliente, se le informa que hemos recibido su pedido con número {0}, el cual será enviado a la dirección {1}",
             new Object[] { nroPedido, cliente.getDireccionFormateada() }
         );
-        // lo imprimimos en pantalla, podría ser un mail, SMS, etc..
+        // Lo imprimimos en pantalla. Podría ser un mail, SMS, etc.
         System.out.println(notificacion);
     }
 }
@@ -65,9 +73,8 @@ public class Cliente {
     private String departamento;
 
     public String getDireccionFormateada() {
-		return this.localidad + ", " + this.calle + ", " + this.numero + ", " + this.departamento;
-	}
+        return this.localidad + ", " + this.calle + ", " + this.numero + ", " + this.departamento;
+    }
 }
-
-
 ```
+
