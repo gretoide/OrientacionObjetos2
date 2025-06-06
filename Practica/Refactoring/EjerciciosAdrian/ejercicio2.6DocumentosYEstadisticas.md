@@ -1,4 +1,4 @@
-## 2.5 ENVIO DE PEDIDOS Adrian
+## 2.6 ENVIO DE PEDIDOS Adrian
 
 ### Pasos a seguir 
 - 1) Detectar y nombrar los malos olores.
@@ -67,7 +67,7 @@ return (ChronoUnit.DAYS.between(this.fechaEstreno, LocalDate.now()) ) > 30 ? 0 :
 
 ### 3. UML de la solución
 
-
+![alt text](image-5.png)
 
 ### 4. Expongo el código correjido, con el refactoring aplicado.
 
