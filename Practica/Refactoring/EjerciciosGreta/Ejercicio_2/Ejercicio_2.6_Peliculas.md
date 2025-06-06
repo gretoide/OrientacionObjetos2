@@ -44,3 +44,18 @@ public class Pelicula {
 }
 
 ```
+
+### 1. Identificar los code smell
+- Método largo.
+- Presencia de condicionales.
+
+### 2. Refactoring a utilizar
+- Replace Conditional with Strategy: creamos la clase abstracta 'Subscripcion' con sus respectivas estrategias (Subcripciones Basica, Familiar, Premium y Plus).
+- Move Method: movemos los cálculos dentro del método que se encuentra en Usuario a las estrategias.
+- Dejar un método en el contexto (clase Usuario) para poder 'configurar' la estrategia.
+- Dejamos otro método en el contexto para delegar.
+
+### 3. Resultado:
+
+![alt text](.\UMLyArchivos\image-10.png)
+  
