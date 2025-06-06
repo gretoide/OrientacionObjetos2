@@ -58,4 +58,69 @@ public class Pelicula {
 ### 3. Resultado:
 
 ![alt text](.\UMLyArchivos\image-10.png)
-  
+
+```java
+public class Usuario {
+    private Subscripcion tipoSubscripcion;
+    private ArrayList<Pelicula> peliculasCompradas;
+
+    public void setTipoSubscripcion(Subscripcion unTipo) {
+   	 this.tipoSubscripcion = unTipo;
+    }
+    
+    public double calcularCostoPelicula(Pelicula pelicula) {
+        return this.tipoSubscripcion.calcularCostoPelicular(pelicula);
+    }
+}
+
+public class Pelicula {
+    LocalDate fechaEstreno;
+    // ...
+
+    public double getCosto() {
+   	 return this.costo;
+    }
+    
+    public double calcularCargoExtraPorEstreno(){
+	// Si la Película se estrenó 30 días antes de la fecha actual, retorna un cargo de 0$, caso contrario, retorna un cargo extra de 300$
+   	return (ChronoUnit.DAYS.between(this.fechaEstreno, LocalDate.now()) ) > 30 ? 0 : 300;
+    }
+}
+
+public abstract class Subscripcion{
+    abstract double calcularCostoPelicula(Pelicula unaPelicula);
+}
+
+public class SubscripcionBasica extends Subscripcion{
+	
+	public double calcularCostoPelicula(Pelicula pelicula) {
+		return pelicula.getCosto() + pelicula.calcularCargoExtraPorEstreno();
+	}
+
+}
+
+public class SubscripcionFamilia extends Subscripcion{
+
+	public double calcularCostoPelicula(Pelicula pelicula) {
+		return (pelicula.getCosto() + pelicula.calcularCargoExtraPorEstreno()) * 0.90;
+	}
+
+}
+
+public class SubscripcionPlus extends Subscripcion{
+
+	public double calcularCostoPelicula(Pelicula pelicula) {
+		return pelicula.getCosto();
+	}
+
+}
+
+public class SubscripcionPremium extends Subscripcion{
+
+	public double calcularCostoPelicula(Pelicula pelicula) {
+		return pelicula.getCosto() * 0.75;
+	}
+
+}
+
+```
